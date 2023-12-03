@@ -1,0 +1,20 @@
+@use 'sass:map';
+
+$font: (
+    "primary": "NovaSquare",
+    "secondary": "NovaSquare",
+);
+
+
+$colors: (
+    "normal": #000000,
+    "primary": #23b0d2,
+    "secondary": #00aef7,
+    "tertiary": #c78cda,
+);
+
+$fontSize: (
+    "low": 15px,
+    "medium": 25px,
+    "high": 35px,
+)
