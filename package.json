@@ -1,0 +1,15 @@
+{
+  "name": "proyectos-react",
+  "version": "1.0.0",
+  "description": "Creación de diversos proyectos en react con vite@latest.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^5.0.4"
+  }
+}
