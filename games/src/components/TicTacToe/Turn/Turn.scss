@@ -1,0 +1,7 @@
+.turn {
+    display: flex;
+    flex-direction: row;
+    margin: 3rem 0rem;
+    font-size: map-get($map: $fontSize, $key: 'fontSizeSmall');
+    gap: 2rem;
+}

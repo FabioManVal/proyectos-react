@@ -1,0 +1,18 @@
+@use 'sass:map';
+
+$colors: (
+    'colorNormal': #e394f7,
+    'colorDark': #2a4360,
+    'colorLight': #fff7d0,
+);
+
+$fontSize: (
+    'fontSizeNormal': 1rem,
+    'fontSizeSmall': 3rem,
+    'fontSizeTiny': 0.5rem,
+);
+
+$fontWeight: (
+    'fontWeightNormal': 400,
+    'fontWeightBold': 700,
+);

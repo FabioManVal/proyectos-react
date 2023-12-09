@@ -1,8 +1,0 @@
-@import '_vars.scss';
-@import '_reset.scss';
-@import '_fonts.scss';
-
-body {
-  color: map-get($map: $colors, $key: "normal");
-  font-size: map-get($map: $fontSize, $key: "low");
-}

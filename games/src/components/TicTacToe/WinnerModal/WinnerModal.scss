@@ -1,0 +1,50 @@
+.winner {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000a4;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__notification {
+        background-color: map-get($map: $colors, $key: 'colorLight');
+        color: #000;
+        width: 30rem;
+        height: 15rem;
+        border-radius: 10px;
+        border: 2px solid map-get($map: $colors, $key: 'colorDark');
+        box-shadow: 0px 0px 10px 1px map-get($map: $colors, $key: 'colorNormal');
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.notification {
+    &__title {
+        font-size: map-get($map: $fontSize, $key: 'fontSizeSmall');
+        color: map-get($map: $colors, $key: 'colorDark');
+
+        i {
+            color: map-get($map: $colors, $key: 'colorDark');
+        }
+    }
+}
+
+.reset {
+    &__button {
+        color: map-get($map: $colors, $key: 'colorNormal');
+        font-size: 4em;
+        margin-top: 0.7em;
+        transition: color 0.1s ease;
+        cursor: pointer;
+        padding: 0;
+
+        &:hover {
+            color: map-get($map: $colors, $key: 'colorDark');
+            transition: color 0.1s ease;
+        }
+    }
+}

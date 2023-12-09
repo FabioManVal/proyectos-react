@@ -1,0 +1,47 @@
+.game {
+    width: 100vw;
+    height: 100vh;
+    font-size: map-get($map: $fontSize, $key: 'fontSizeNormal');
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: map-get($map: $colors, $key: "colorDark");
+    color: map-get($map: $colors, $key: "colorLight");
+
+    &__title {
+        font-size: map-get($map: $fontSize, $key: 'fontSizeSmall');
+        font-style: italic;
+        margin: 1rem;
+    }
+}
+
+.content {
+
+    &__header {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        align-items: center;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.header {
+
+    &__button {
+        height: max-content;
+        width: max-content;
+        color: map-get($map: $colors, $key: 'colorLight');
+        cursor: pointer;
+        font-size: 4em;
+
+        &:hover {
+            color: map-get($map: $colors, $key: 'colorNormal');
+        }
+    }
+}
