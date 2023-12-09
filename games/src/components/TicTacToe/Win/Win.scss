@@ -11,12 +11,12 @@
         grid-template-columns: repeat(2, 1fr);
         margin: 10px;
         padding: 3px;
-        background-color: map-get($map: $colors, $key: 'colorLight');
+        background-color: map-get($map: $colors, $key: 'tictactoe--colorLight');
         border-radius: 5px;
     }
 
     &__reset {
-        color: map-get($map: $colors, $key: 'colorNormal');
+        color: map-get($map: $colors, $key: 'tictactoe--colorNormal');
         font-size: 0.8em;
 
         i {
@@ -29,14 +29,14 @@
 
 .content {
     &__icon {
-        color: map-get($map: $colors, $key: 'colorDark');
+        color: map-get($map: $colors, $key: 'tictactoe--colorDark');
         display: flex;
         align-self: center;
         justify-self: center;
     }
 
     &__winsNums {
-        color: map-get($map: $colors, $key: 'colorNormal');
+        color: map-get($map: $colors, $key: 'tictactoe--colorNormal');
         display: flex;
         align-self: center;
         justify-self: center;

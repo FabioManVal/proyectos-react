@@ -1,9 +1,14 @@
 @use 'sass:map';
 
 $colors: (
-    'colorNormal': #e394f7,
-    'colorDark': #2a4360,
-    'colorLight': #fff7d0,
+    // cube palette: https://mycolor.space/?hex=%23e394f7&sub=1
+    'tictactoe--colorNormal': #e394f7,
+    'tictactoe--colorDark': #2a4360,
+    'tictactoe--colorLight': #fff7d0,
+    // cube palette: https://mycolor.space/?hex=%232CD9B0&sub=1
+    'xcolorLight' : #2cd9b0,
+    'xcolorDark' : #1c3b26,
+    'xcolorNormal' : #545479
 );
 
 $fontSize: (

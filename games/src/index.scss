@@ -1,12 +1,3 @@
-@import 'scss/_vars.scss';
-@import 'scss/_reset.scss';
-
-@import 'components/TicTacToe/Board/Board.scss';
-@import 'components/TicTacToe/Square/Square.scss';
-@import 'components/TicTacToe/Turn/Turn.scss';
-@import 'components/TicTacToe/Win/Win.scss';
-@import 'components/TicTacToe/WinnerModal/WinnerModal.scss';
-
-@import 'pages/App/App.scss';
-@import 'pages/TicTacToe/TicTacToe.scss'
-// to study spread and rest operator
+// Para ver los estilos del TicTacToe deshabilité los comentarios
+//@import 'pages/GuessNumber/GuessNumber.scss';
+// to study spread and rest operator.

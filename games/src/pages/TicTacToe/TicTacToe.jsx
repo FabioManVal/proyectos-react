@@ -14,6 +14,8 @@ import { TURNS } from '../../constants';
 import { newTurn } from '../../utils/TicTacToe/turn';
 import { isEqualsTo } from '../../utils/TicTacToe/validations';
 
+import './TicTacToe.scss';
+
 export function TicTacToe() {
 
     // Estado que cuenta las victorias de cada jugador
@@ -90,20 +92,22 @@ export function TicTacToe() {
     return (
         <>
             <main className="game">
-                <h1 className="game__title">Tic Tac Toe</h1>
-                <div className="game__content">
-                    <header className="content__header">
-                        <Win wins={countWin} restCount={resetWins} ></Win>
-                        <Board board={board} update={updateBoard}></Board>
-                        <button onClick={resetGame} className="header__button">
-                            <i className="bi bi-arrow-clockwise"></i>
-                        </button>
-                    </header>
-                    <footer className='content__footer'>
-                        <Turn turn={turn} />
-                    </footer>
+                <div className="game__tictactoe">
+                    <h1 className="tictactoe__title">Tic Tac Toe</h1>
+                    <div className="tictactoe__content">
+                        <header className="content__header">
+                            <Win wins={countWin} restCount={resetWins} ></Win>
+                            <Board board={board} update={updateBoard}></Board>
+                            <button onClick={resetGame} className="header__button">
+                                <i className="bi bi-arrow-clockwise"></i>
+                            </button>
+                        </header>
+                        <footer className='content__footer'>
+                            <Turn turn={turn} />
+                        </footer>
+                    </div>
+                    <WinnerModal resetGame={resetGame} winner={winner} />
                 </div>
-                <WinnerModal resetGame={resetGame} winner={winner} />
             </main>
         </>
     );
