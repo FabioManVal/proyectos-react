@@ -21,37 +21,33 @@ export const resetClass = (arr) => {
     return tmpArr;
 }
 
+// Retorno unicamente números.
 export const isNumber = (number) => {
-    if (!isNaN(number) && number !== '.') {
+    if (!isNaN(number) && number !== '.' && number !== '') {
         return number;
     }
     return null;
 }
 
-// Al momento de presionar Enter me guardo el número insertado.
-// y no se repita el número insertado.
-// if (event.ctrlKey && event.key === 'Backspace') {
-//     setInsertNumber('');
-//     setShowNumber('');
-// }
+export const sortNumbers = (arrNumbers, sort) => {
+    let tmpNums = [];
+    const arr = [];
+    arrNumbers.map((elem) => {
+        tmpNums.push(elem[0]);
+    })
+    tmpNums = tmpNums.sort(sort)
+    tmpNums.map((elem) => {
+        arr.push([elem, '']);
+    })
+    return arr
+}
 
-// if (event.key === 'Enter') {
-//     const numbers = resetClass([...guessNumber]);
-//     const repeatIndex = repeatNumber(numbers, insertNumber, 'alert');
-
-//     //!numbers.includes(insertNumber)
-//     if (repeatIndex !== null) {
-//         numbers[repeatIndex] = [insertNumber, 'alert'];
-//         setGuessNumber(numbers);
-//     } else {
-//         numbers.push([insertNumber, '']);
-//         setGuessNumber(numbers);
-//     }
-//     setInsertNumber('')
-// }
-
-// if (event.key === 'Backspace') {
-//     const temp = insertNumber.slice(0, -1);
-//     setInsertNumber(temp);
-// }
-
+// Busca el número repetido y le asigna una clase para resaltarlo.
+export const focusRepeatNumber = (arr, index, number, classFocus) => {
+    if (index !== null) {
+        arr[index] = [number, classFocus];
+    } else {
+        arr.push([number, '']);
+    }
+    return arr;
+}
