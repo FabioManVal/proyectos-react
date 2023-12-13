@@ -1,62 +1,31 @@
 .inputNumber {
     display: flex;
     flex-direction: row;
-    background-color: map-get($map: $colors, $key: 'xcolorPNormal');
-    box-shadow: 1px 1px 8px 1px map-get($map: $colors, $key: 'xcolorPLight');
-    margin: .5em 0;
-    font-size: 2.5em;
     width: max-content;
     padding: 0.2em;
     border-radius: 5px;
+    font-size: map-get($map: $fontSize, $key: 'fs2.5');
+    color: map-get($map: $guessNumber, $key: 'thirdColor');
+    background-color: map-get($map: $guessNumber, $key: 'secondColor');
+    box-shadow: 1px 1px 8px 1px map-get($map: $guessNumber, $key: 'thirdColor');
 
     &__title {
         position: relative;
-        color: map-get($map: $colors, $key: 'xcolorBDark');
 
         &--mirror {
             position: absolute;
             top: 0;
             left: -4px;
-            color: map-get($map: $colors, $key: 'xcolorBLight');
+            color: map-get($map: $guessNumber, $key: 'firstColor');
         }
     }
 
     &__number {
-        color: map-get($map: $colors, $key: 'xcolorG');
-        font-weight: map-get($map: $fontWeight, $key: 'fontWeightBold');
+        font-size: 2.0rem;
+        display: flex;
+        align-items: center;
+        color: map-get($map: $guessNumber, $key: 'fourthColor');
+        font-weight: map-get($map: $fontWeight, $key: 'fw700');
     }
 
 }
-
-// .inputNumber {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: right;
-//     background-color: map-get($map: $colors, $key: 'colorLight');
-//     // margin: 0em 2em 0em 0em;
-
-//     &__title {
-//         font-size: 2em;
-//         z-index: 2;
-//         position: relative;
-//         // width: 3em;
-//         color: map-get($map: $colors, $key: 'colorNormal');
-//         // background-color: map-get($map: $colors, $key: 'colorNormal');
-
-//         &--mirror {
-//             position: absolute;
-//             color: #9b9bd8;
-//             top: 0px;
-//             right: -3px;
-//             z-index: 1;
-//         }
-//     }
-
-//     &__number {
-//         font-weight: map-get($map: $fontWeight, $key: 'fontWeightBold');
-//         margin-right: 0.5em;
-//         width: max-content;
-//         font-size: 2em;
-//         color: map-get($map: $colors, $key: 'xcolorPLight');
-//     }
-// }

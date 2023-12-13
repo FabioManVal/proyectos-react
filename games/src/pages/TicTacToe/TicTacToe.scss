@@ -11,21 +11,26 @@
     &__tictactoe {
         width: 100vw;
         height: 100vh;
-        font-size: map-get($map: $fontSize, $key: 'fontSizeNormal');
+        font-size: map-get($map: $fontSize, $key: 'fs1.5');
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: map-get($map: $colors, $key: "tictactoe--colorDark");
-        color: map-get($map: $colors, $key: "tictactoe--colorLight");
+        background-color: map-get($map: $tictactoe, $key: "secondColor");
+        color: map-get($map: $tictactoe, $key: "thirdColor");
     }
 }
 
 .tictactoe {
     &__title {
-        font-size: map-get($map: $fontSize, $key: 'fontSizeSmall');
+        font-size: map-get($map: $fontSize, $key: 'fs4');
+        cursor: default;
         font-style: italic;
         margin: 1rem;
+
+        &::selection {
+            background-color: transparent;
+        }
     }
 }
 
@@ -49,12 +54,12 @@
     &__button {
         height: max-content;
         width: max-content;
-        color: map-get($map: $colors, $key: 'tictactoe--colorLight');
+        color: map-get($map: $tictactoe, $key: 'thirdColor');
         cursor: pointer;
         font-size: 4em;
 
         &:hover {
-            color: map-get($map: $colors, $key: 'tictactoe--colorNormal');
+            color: map-get($map: $tictactoe, $key: 'firstColor');
         }
     }
 }

@@ -21,7 +21,7 @@ export function GuessNumber() {
 
             const inputNumber = isNumber(event.key);
             // Valido que en el número insertado no contenga letras ni puntos.
-            if (inputNumber) {
+            if (inputNumber && inputNumber !== '') {
                 setInsertNumber(insertNumber + inputNumber);
             }
 
@@ -42,16 +42,19 @@ export function GuessNumber() {
                 const newNumberTall = focusRepeatNumber(numbersTall, repeatIndexTall, insertNumber, 'alert');
                 const newNumberLow = focusRepeatNumber(numbersLow, repeatIndexLow, insertNumber, 'alert');
 
-
                 // Error al organizar ya que mi array no es de números es de objetos = [[1, ''], [2, ''] ...]
 
                 if (insertNumber > guessNumber) {
-                    const tmp = newNumberTall.sort((a, b) => a - b);
-                    setTooTall(tmp);
+                    const tmp = newNumberTall.sort((a, b) => b - a);
+                    if (tmp.length > 0) {
+                        setTooTall(tmp);
+                    }
                 }
                 if (insertNumber < guessNumber) {
                     const tmp = newNumberLow.sort((a, b) => b - a);
-                    setTooLow(tmp);
+                    if (tmp.length > 0) {
+                        setTooLow(tmp);
+                    }
                 }
                 setInsertNumber('')
             }
@@ -108,10 +111,13 @@ export function GuessNumber() {
                 <div className="game__guessNumber">
                     <h1 className="guessNumber__title">Adivina el número</h1>
                     <InputNumber number={showNumber}></InputNumber>
-                    <div className="guessNumber__content">
-                        <Numbers arrNumbers={tooTall} tooTall={true}></Numbers>
-                        <Numbers arrNumbers={tooLow} tooTall={false}></Numbers>
-                    </div>
+                    {tooTall.length > 0 || tooLow.length > 0 ?
+                        <div className="guessNumber__content">
+                            <Numbers arrNumbers={tooTall} tooTall={true}></Numbers>
+                            <Numbers arrNumbers={tooLow} tooTall={false}></Numbers>
+                        </div> :
+                        ''
+                    }
                 </div>
             </main >
         </>

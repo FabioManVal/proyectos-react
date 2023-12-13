@@ -47,7 +47,9 @@ export const focusRepeatNumber = (arr, index, number, classFocus) => {
     if (index !== null) {
         arr[index] = [number, classFocus];
     } else {
-        arr.push([number, '']);
+        if (number !== '') {
+            arr.push([number, '']);
+        }
     }
     return arr;
 }

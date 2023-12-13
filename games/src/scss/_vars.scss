@@ -1,11 +1,30 @@
 @use 'sass:map';
 
+$tictactoe: (
+    'firstColor': #e394f7,
+    'secondColor': #2a4360,
+    'thirdColor': #fff7d0
+);
+
+$guessNumber: (
+    'firstColor': #febe7e,
+    'secondColor': #ec7263,
+    'thirdColor': #a75265,
+    'fourthColor': #57385c,
+);
+
 $colors: (
     // cube palette: https://mycolor.space/?hex=%23e394f7&sub=1
     'tictactoe--colorNormal': #e394f7,
     'tictactoe--colorDark': #2a4360,
     'tictactoe--colorLight': #fff7d0,
     // cube palette: https://mycolor.space/?hex=%232CD9B0&sub=1
+
+
+
+
+
+
     'xcolorPLight': #e394f7,
     'xcolorPNormal': #9197fd,
     'xcolorBLight': #0095ed,
@@ -16,12 +35,25 @@ $colors: (
 );
 
 $fontSize: (
-    'fontSizeNormal': 1rem,
-    'fontSizeSmall': 3rem,
-    'fontSizeTiny': 0.5rem,
+    'fs0.5': 0.5rem,
+    'fs1': 1rem,
+    'fs1.5': 1.5rem,
+    'fs2': 2rem,
+    'fs2.5': 2.5rem,
+    'fs3': 3rem,
+    'fs3.5': 3.5rem,
+    'fs4': 4rem,
+    'fs4.5': 4.5rem,
 );
 
 $fontWeight: (
-    'fontWeightNormal': 400,
-    'fontWeightBold': 700,
+    'fw100':100,
+    'fw200':200,
+    'fw300':300,
+    'fw400':400,
+    'fw500':500,
+    'fw600':600,
+    'fw700':700,
+    'fw800':800,
+    'fw900':900,
 );
