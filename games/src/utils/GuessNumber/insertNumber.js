@@ -11,13 +11,26 @@ export const repeatNumber = (arr, data, className) => {
     return null;
 }
 
+// Ordena los números de la lista
+export const sortNumbers = (arrNumbers, sort) => {
+    const nums = arrNumbers
+        .map(subArr => subArr[0])
+        .filter(number => typeof (number) === 'number')
+        .sort(sort);
+
+    const result = nums
+        .map(num => [num, '']);
+
+    console.log(nums);
+
+    return result;
+}
+
 // Restablece todas las clases de los elementos.
 export const resetClass = (arr) => {
-    const tmpArr = [];
-    arr.map((list) => {
-        list[1] = '';
-        tmpArr.push(list);
-    })
+    const tmpArr = arr
+        .map(subArr => [subArr[0], '']);
+
     return tmpArr;
 }
 
@@ -27,19 +40,6 @@ export const isNumber = (number) => {
         return number;
     }
     return null;
-}
-
-export const sortNumbers = (arrNumbers, sort) => {
-    let tmpNums = [];
-    const arr = [];
-    arrNumbers.map((elem) => {
-        tmpNums.push(elem[0]);
-    })
-    tmpNums = tmpNums.sort(sort)
-    tmpNums.map((elem) => {
-        arr.push([elem, '']);
-    })
-    return arr
 }
 
 // Busca el número repetido y le asigna una clase para resaltarlo.

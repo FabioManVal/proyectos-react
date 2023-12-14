@@ -33,10 +33,11 @@ export function GuessNumber() {
 
             // Inserta el número a la lista presionando Enter.
             if (event.key === 'Enter') {
-                let numbersTall = resetClass([...tooTall]);
-                numbersTall = sortNumbers(numbersTall, ((a, b) => b - a));
-                let numbersLow = resetClass([...tooLow]);
-                numbersLow = sortNumbers(numbersLow, ((a, b) => a - b));
+                // let numbersTall = resetClass([...tooTall]);
+                const numbersTall = sortNumbers([...tooTall], ((a, b) => a - b));
+                const numbersLow = sortNumbers([...tooLow], ((a, b) => a - b));
+                // let numbersLow = resetClass([...tooLow]);
+                // numbersLow = sortNumbers(numbersLow, ((a, b) => a - b));
                 const repeatIndexTall = repeatNumber(numbersTall, insertNumber, 'alert');
                 const repeatIndexLow = repeatNumber(numbersLow, insertNumber, 'alert');
                 const newNumberTall = focusRepeatNumber(numbersTall, repeatIndexTall, insertNumber, 'alert');

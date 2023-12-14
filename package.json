@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Creación de diversos proyectos en react con vite@latest.",
   "main": "index.js",
-  "scripts": {
-    "test": "jest --watchAll"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,15 +13,6 @@
   "devDependencies": {
     "@babel/preset-env": "^7.23.5",
     "@babel/preset-react": "^7.23.3",
-    "@testing-library/dom": "^9.3.3",
-    "@testing-library/jest-dom": "^6.1.5",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
-    "@types/jest": "^29.5.11",
-    "babel-jest": "^29.7.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "jest-svg-transformer": "^1.0.0",
     "standard": "^17.1.0",
     "whatwg-fetch": "^3.6.19"
   },

@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "test": "jest --watchAll=false --coverage --CI=true"
+    "preview": "vite preview"
   },
   "dependencies": {
     "bootstrap-icons": "^1.11.2",
