@@ -11,11 +11,9 @@ export function Numbers({ arrNumbers, tooTall }) {
                         arrNumbers.map((num) => {
                             return num[1] !== '' ?
                                 <div key={num[0]} className={tooClass}>
-                                    <i className="bi bi-caret-down-fill"></i>
                                     <p className="numbers__input input__alert">{num[0]}</p>
                                 </div> :
                                 <div key={num[0]} className={tooClass}>
-                                    <i key={num[0]} className="bi bi-caret-down-fill"></i>
                                     <p className="numbers_input">{num[0]}</p>
                                 </div>
                         }) :

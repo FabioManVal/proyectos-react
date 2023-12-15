@@ -4,6 +4,8 @@
 /* Components */
 @import '../../components/GuessNumber/InputNumber/InputNumber.scss';
 @import '../../components/GuessNumber/Numbers/Numbers.scss';
+@import '../../components/GuessNumber/Number/Number.scss';
+@import '../../components/GuessNumber/ShowNumber/ShowNumber.scss';
 
 .game {
     &__guessNumber {
@@ -24,10 +26,14 @@
 
     &__content {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        margin-top: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: map-get($map: $fontSize, $key: 'fs1');
         border-radius: 5px;
-        background-color: map-get($map: $guessNumber, $key: 'secondColor');
-        box-shadow: 1px 1px 5px 1px map-get($map: $guessNumber, $key: 'thirdColor');
+    }
+
+    &__alertNumber {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: map-get($map: $fontSize, $key: 'fs3');
     }
 }

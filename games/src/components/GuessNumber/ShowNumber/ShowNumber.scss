@@ -1,0 +1,17 @@
+.showNumber {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15em;
+    color: map-get($map: $guessNumber, $key: 'firstColor');
+
+    &__show {
+        position: absolute;
+        background-color: map-get($map: $guessNumber, $key: 'thirdColor');
+        padding: .1em .4em;
+        border-radius: 50%;
+        box-shadow: 1px 1px 5px 1px map-get($map: $guessNumber, $key: 'thirdColor');
+    }
+}
