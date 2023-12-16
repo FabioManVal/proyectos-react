@@ -5,16 +5,22 @@ import { InputNumber } from '../../components/GuessNumber/InputNumber/InputNumbe
 import { Numbers } from '../../components/GuessNumber/Numbers/Numbers';
 import { Number } from '../../components/GuessNumber/Number/Number';
 import { ShowNumber } from '../../components/GuessNumber/ShowNumber/ShowNumber';
+import { WinnerModal } from '../../components/GuessNumber/WinnerModal/WinnerModal';
 
 import { repeatNumber, focusRepeatNumber, sortNumbers } from '../../utils/GuessNumber/insertNumber';
-import { isNumber } from '../../utils/GuessNumber/validations';
+import { isNumber, existNumber } from '../../utils/GuessNumber/validations';
 
 export function GuessNumber() {
 
-    // Almacena el número que se esta insertando
+    // Almacena el número que se esta insertando.
     const [insertNumber, setInsertNumber] = useState('');
+    const [validationNumber, setValidationNumber] = useState('');
+    // Almacena la cantidad de intentos que se necesitaron para ganar.
+    const [tries, setTries] = useState(0);
     // Almacena el número a adivinar.
     const [guessNumber, setGuessNumber] = useState(27);
+    // Almacena el número ganador.
+    const [winnerNumber, setWinnerNumber] = useState(0);
     // Almacena el número más alto y más bajo.
     const [alertNumber, setAlertNumber] = useState([0, 0]);
     // Almacena una lista de los números que están encima del número a adivinar.
@@ -23,7 +29,25 @@ export function GuessNumber() {
     const [tooLow, setTooLow] = useState([]);
 
 
+    useEffect(() => {
+        const countTries = ((event) => {
+            if (event.key === 'Enter') {
+                if (insertNumber !== guessNumber) {
+                    if (
+                        !existNumber(insertNumber, tooTall) &&
+                        !existNumber(insertNumber, tooLow)) {
+                        setTries(tries + 1);
+                    }
+                }
+            }
+        })
 
+        window.addEventListener('keydown', countTries);
+
+        return () => {
+            window.removeEventListener('keydown', countTries)
+        }
+    }, [tries, guessNumber, insertNumber]);
 
 
     // Modifica el numero insertado cuando se presione una tecla.
@@ -52,14 +76,14 @@ export function GuessNumber() {
                         repeatNumber(arrTall, insertNumber, alertClass),
                         insertNumber,
                         alertClass
-                    )
+                    );
                     const arrLow = sortNumbers([...tooLow], ((a, b) => a - b));
                     const newLow = focusRepeatNumber(
                         arrLow,
                         repeatNumber(arrLow, insertNumber, alertClass),
                         insertNumber,
                         alertClass
-                    )
+                    );
 
                     if (insertNumber > guessNumber) {
                         if (newTall.length > 0) {
@@ -74,7 +98,11 @@ export function GuessNumber() {
                             setAlertNumber([alertNumber[0], insertNumber]);
                         }
                     }
-                    setInsertNumber('')
+                    setValidationNumber(insertNumber);
+                    if (insertNumber == guessNumber) {
+                        setWinnerNumber(insertNumber);
+                    }
+                    setInsertNumber('');
                 }
             }
 
@@ -89,7 +117,7 @@ export function GuessNumber() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         }
-    }, [insertNumber, tooTall, tooLow, guessNumber]);
+    }, [insertNumber, tooTall, tooLow, guessNumber, validationNumber, alertNumber]);
 
 
     return (
@@ -113,11 +141,18 @@ export function GuessNumber() {
                     {tooTall.length > 0 || tooLow.length > 0 ?
                         <div className="guessNumber__content">
                             <Numbers arrNumbers={tooTall} tooTall={true}></Numbers>
-                            <div><ShowNumber number={guessNumber}>{insertNumber}</ShowNumber></div>
+                            <div><ShowNumber number={guessNumber}>{validationNumber}</ShowNumber></div>
                             <Numbers arrNumbers={tooLow} tooTall={false}></Numbers>
                         </div> :
                         ''
                     }
+
+                    {
+                        winnerNumber !== 0 ?
+                            <WinnerModal>{winnerNumber}</WinnerModal> :
+                            ''
+                    }
+                    {tries}
                 </div>
             </main >
         </>

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Square } from "../Square/Square";
 
 import { TURNS } from "../../../constants";
@@ -18,4 +19,8 @@ export function Turn({ turn }) {
             </section>
         </>
     );
+}
+
+Turn.propTypes = {
+    turn: PropTypes.string
 }

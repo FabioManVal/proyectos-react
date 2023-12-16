@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export function InputNumber({ number }) {
 
     return (
@@ -11,4 +13,8 @@ export function InputNumber({ number }) {
             <footer className='inputNumber__number'>{number}</footer>
         </section>
     );
+}
+
+InputNumber.propTypes = {
+    number: PropTypes.string,
 }

@@ -6,7 +6,7 @@
     margin: 5px 0px;
     padding: 10px;
     gap: map-get($map: $fontSize, $key: 'fs1.5');
-    font-size: map-get($map: $fontSize, $key: 'fs2');
+    font-size: map-get($map: $fontSize, $key: 'fs1');
     font-weight: map-get($map: $fontWeight, $key: 'fw800');
     color: map-get($map: $guessNumber, $key: 'firstColor');
 
@@ -17,7 +17,6 @@
         align-items: end;
         flex-wrap: wrap-reverse;
         border-radius: 5px;
-        padding-right: map-get($map: $fontSize, $key: 'fs1.5');
         background-color: map-get($map: $guessNumber, $key: 'secondColor');
         box-shadow: 1px 1px 5px 1px map-get($map: $guessNumber, $key: 'thirdColor');
     }
@@ -28,7 +27,6 @@
         display: flex;
         justify-content: start;
         border-radius: 5px;
-        padding-left: map-get($map: $fontSize, $key: 'fs1.5');
         background-color: map-get($map: $guessNumber, $key: 'secondColor');
         box-shadow: 1px 1px 5px 1px map-get($map: $guessNumber, $key: 'thirdColor');
     }
@@ -37,8 +35,8 @@
         height: max-content;
         width: max-content;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: row-reverse;
+        justify-content: right;
         border-radius: 5px;
         padding: 5px;
         font-size: map-get($map: $fontSize, $key: 'fs2.5');

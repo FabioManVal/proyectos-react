@@ -29,6 +29,7 @@
         grid-template-columns: repeat(3, 1fr);
         margin-top: map-get($map: $fontSize, $key: 'fs1');
         border-radius: 5px;
+        position: relative;
     }
 
     &__alertNumber {

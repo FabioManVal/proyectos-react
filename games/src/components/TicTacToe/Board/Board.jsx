@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
+
 import { Square } from '../Square/Square';
 import { createTurn } from '../../../utils/TicTacToe/turn';
 
 export function Board({ board, update }) {
-
-
     return (
         <>
             <section className='board'>
@@ -19,4 +19,9 @@ export function Board({ board, update }) {
             </section>
         </>
     );
+}
+
+Board.propTypes = {
+    board: PropTypes.array.isRequired,
+    update: PropTypes.func.isRequired
 }

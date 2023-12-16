@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { createTurn } from '../../../utils/TicTacToe/turn';
 
 export function WinnerModal({ winner, resetGame }) {
@@ -23,4 +25,9 @@ export function WinnerModal({ winner, resetGame }) {
             }
         </>
     );
+}
+
+WinnerModal.propTypes = {
+    winner: PropTypes.string,
+    resetGame: PropTypes.func
 }

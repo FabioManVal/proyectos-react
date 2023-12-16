@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { TURNS } from '../../../constants';
 import { createTurn } from '../../../utils/TicTacToe/turn';
 
@@ -20,4 +22,9 @@ export function Win({ wins, restCount }) {
             </div>
         </>
     );
+}
+
+Win.propTypes = {
+    wins: PropTypes.array,
+    restCount: PropTypes.func,
 }
