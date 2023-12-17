@@ -1,14 +1,19 @@
-@import '../../scss/_vars.scss';
+@use '../../scss/_vars.scss';
 @import '../../scss/_reset.scss';
 
 /* Components */
 @import '../../components/GuessNumber/InputNumber/InputNumber.scss';
-@import '../../components/GuessNumber/Numbers/Numbers.scss';
-@import '../../components/GuessNumber/Number/Number.scss';
+@import '../../components/GuessNumber/ListNumbers/ListNumbers.scss';
 @import '../../components/GuessNumber/ShowNumber/ShowNumber.scss';
+@import '../../components/GuessNumber/DisplayGuessNumber/DisplayGuessNumber.scss';
+@import '../../components/GuessNumber/Tries/Tries.scss';
 
 .game {
     &__guessNumber {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
         width: 100vw;
         height: 100vh;
         padding: 0px 2em 0px 2em;
@@ -19,9 +24,9 @@
 
 .guessNumber {
     &__title {
-        text-align: center;
-        font-style: italic;
+        position: relative;
         font-size: map-get($map: $fontSize, $key: 'fs3');
+        margin: 0 auto;
     }
 
     &__content {
@@ -36,5 +41,23 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         margin-top: map-get($map: $fontSize, $key: 'fs3');
+    }
+}
+
+.title {
+    &__text {
+        position: relative;
+        text-align: center;
+        font-style: italic;
+        z-index: 2;
+
+        &--mirror {
+            position: absolute;
+            color: map-get($map: $guessNumber, $key: 'thirdColor');
+            text-align: center;
+            top: 0;
+            right: -0.15rem;
+            z-index: 1;
+        }
     }
 }

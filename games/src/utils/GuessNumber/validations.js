@@ -6,16 +6,16 @@ export const isNumber = (number) => {
     return null;
 }
 
-// Error al validar si le número existe
+// Valida si le número pasado existe en el array
 export const existNumber = (number, arrNumber) => {
-    let nums = [];
-    arrNumber
-        .map((num) => {
-            nums.push(num);
-        });
-    return nums.indexOf(number) !== -1 ?
-        true :
-        false;
+    let exist = false;
+    for (let position = 0; position < arrNumber.length; position++) {
+        if (arrNumber[position][0] === number) {
+            exist = true;
+            break;
+        }
+    }
+    return exist;
 }
 
 export const sortNumbers = (arrNumbers, sort) => {

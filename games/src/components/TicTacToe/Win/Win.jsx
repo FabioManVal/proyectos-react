@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './Win.scss';
 
 import { TURNS } from '../../../constants';
 import { createTurn } from '../../../utils/TicTacToe/turn';

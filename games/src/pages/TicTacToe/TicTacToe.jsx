@@ -7,7 +7,7 @@ import { newWinner } from '../../utils/TicTacToe/winner';
 import { Board } from '../../components/TicTacToe/Board/Board';
 import { Win } from '../../components/TicTacToe/Win/Win';
 import { Turn } from '../../components/TicTacToe/Turn/Turn';
-import { WinnerModal } from '../../components/TicTacToe/WinnerModal/WinnerModal';
+// import { WinnerModal } from '../../components/TicTacToe/WinnerModal/WinnerModal';
 
 /* Constants */
 import { TURNS } from '../../constants';
@@ -92,7 +92,22 @@ export function TicTacToe() {
     return (
         <>
             <main className="game">
-                <div className="game__tictactoe">
+                <div className="game__board board">
+                    <div className="board__title">Tic Tac Toe</div>
+                    <div className="board__content content">
+                        <header className='content__header header'>
+                            <Win wins={countWin} restCount={resetWins} ></Win>
+                            <Board board={board} update={updateBoard}></Board>
+                            <button onClick={resetGame} className="header__button">
+                                <i className="bi bi-arrow-clockwise"></i>
+                            </button>
+                        </header>
+                        <footer className='content__footer footer'>
+                            <Turn turn={turn} />
+                        </footer>
+                    </div>
+                </div>
+                {/* <div className="game__tictactoe">
                     <h1 className="tictactoe__title">Tic Tac Toe</h1>
                     <div className="tictactoe__content">
                         <header className="content__header">
@@ -107,7 +122,7 @@ export function TicTacToe() {
                         </footer>
                     </div>
                     <WinnerModal resetGame={resetGame} winner={winner} />
-                </div>
+                </div> */}
             </main>
         </>
     );

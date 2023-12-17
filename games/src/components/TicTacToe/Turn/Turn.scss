@@ -1,7 +1,9 @@
+@use './../../../scss/index.scss' as *;
+
 .turn {
     display: flex;
     flex-direction: row;
     margin: 3rem 0rem;
-    font-size: map-get($map: $fontSize, $key: 'fs4');
+    font-size: $sz4;
     gap: 2rem;
 }

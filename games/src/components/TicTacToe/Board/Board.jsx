@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './Board.scss';
 
 import { Square } from '../Square/Square';
 import { createTurn } from '../../../utils/TicTacToe/turn';

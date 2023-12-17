@@ -1,0 +1,28 @@
+.displayGuessNumber {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8em;
+    color: map-get($map: $guessNumber, $key: 'firstColor');
+
+    &__show {
+        position: absolute;
+        top: -10rem;
+
+        &--mirror {
+            position: absolute;
+            top: 0;
+            left: .4rem;
+            z-index: 1;
+            color: map-get($map: $guessNumber, $key: 'thirdColor');
+        }
+    }
+}
+
+.show {
+    &__number {
+        position: relative;
+        z-index: 2;
+    }
+}

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './Turn.scss';
 import { Square } from "../Square/Square";
 
 import { TURNS } from "../../../constants";

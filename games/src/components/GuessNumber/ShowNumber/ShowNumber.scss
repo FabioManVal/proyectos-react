@@ -1,13 +1,61 @@
 .showNumber {
-    height: 100%;
+    // background-color: palegoldenrod;
+    position: relative;
+    font-size: map-get($map: $fontSize, $key: 'fs3');
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 8em;
-    color: map-get($map: $guessNumber, $key: 'firstColor');
 
-    &__show {
-        position: absolute;
-        top: -1.5em;
+    &__number {
+        position: relative;
+        width: max-content;
+        color: map-get($map: $guessNumber, $key: 'firstColor');
+        font-size: map-get($map: $fontSize, $key: 'fs4');
+        padding: 12px;
+        border-radius: 5px;
+        z-index: 2;
+    }
+
+    &__icon {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: map-get($map: $guessNumber, $key: 'firstColor');
+        font-size: map-get($map: $fontSize, $key: 'fs4');
+        z-index: 2;
+    }
+}
+
+.number {
+    &__display {
+        position: relative;
+        width: max-content;
+        z-index: 2;
+
+        &--mirror {
+            position: absolute;
+            width: max-content;
+            top: 0.8rem;
+            left: 1rem;
+            color: map-get($map: $guessNumber, $key: 'thirdColor');
+            z-index: 1;
+        }
+    }
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+
+    &__arrow {
+        position: relative;
+        z-index: 2;
+
+        &--mirror {
+            position: absolute;
+            color: map-get($map: $guessNumber, $key: 'thirdColor');
+            left: 0.15rem;
+            top: 0.75rem;
+            z-index: 1;
+        }
     }
 }

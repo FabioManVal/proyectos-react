@@ -1,32 +1,27 @@
-@import '../../scss/_vars.scss';
-@import '../../scss/_reset.scss';
-
-@import '../../components/TicTacToe/Board/Board.scss';
-@import '../../components/TicTacToe/Square/Square.scss';
-@import '../../components/TicTacToe/Turn/Turn.scss';
-@import '../../components/TicTacToe/Win/Win.scss';
-@import '../../components/TicTacToe/WinnerModal/WinnerModal.scss';
+@forward './../../scss/_reset.scss';
+@use './../../scss/index.scss' as *;
+@use './../../scss/_reset.scss' as *;
 
 .game {
-    &__tictactoe {
+    &__board {
         width: 100vw;
         height: 100vh;
-        font-size: map-get($map: $fontSize, $key: 'fs1.5');
+        font-size: $sz15;
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: map-get($map: $tictactoe, $key: "secondColor");
-        color: map-get($map: $tictactoe, $key: "thirdColor");
+        background-color: $cl5;
+        color: $cl1;
     }
 }
 
-.tictactoe {
+.board {
     &__title {
-        font-size: map-get($map: $fontSize, $key: 'fs4');
+        font-size: $sz3;
         cursor: default;
         font-style: italic;
-        margin: 1rem;
+        margin: $sz1;
 
         &::selection {
             background-color: transparent;
@@ -54,12 +49,12 @@
     &__button {
         height: max-content;
         width: max-content;
-        color: map-get($map: $tictactoe, $key: 'thirdColor');
+        color: $cl2;
         cursor: pointer;
-        font-size: 4em;
+        font-size: $sz4;
 
         &:hover {
-            color: map-get($map: $tictactoe, $key: 'firstColor');
+            color: $cl1;
         }
     }
 }
