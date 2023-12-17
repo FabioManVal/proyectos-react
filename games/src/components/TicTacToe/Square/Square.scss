@@ -5,33 +5,47 @@
         display: grid;
         align-items: center;
         justify-content: center;
-        outline: 3px solid $cl1;
-        color: $cl1;
+        border: 1px solid $colorText;
+        color: $colorButtonHover;
         font-size: $sz4;
         font-weight: $fw700;
-        border-radius: 5px;
-        margin: 0.2em;
         cursor: pointer;
 
         /*select text color*/
         &::selection {
             background-color: transparent;
         }
+
+    }
+
+    &__square--top {
+        border-top: none;
+    }
+
+    &__square--left {
+        border-left: none;
+    }
+
+    &__square--right {
+        border-right: none;
+    }
+
+    &__square--bottom {
+        border-bottom: none;
     }
 }
 
 .turn {
     &__square {
         padding: $sz1 $sz15;
-        color: $cl1;
+        color: $colorButton;
         font-weight: $fw700;
         transition: color 0.2s ease;
     }
 
     &__square--is-selected {
-        border: 1px solid $cl3;
-        background-color: $cl1;
-        color: $cl2;
+        background-color: $colorButtonHover;
+        color: $backgroundPage;
         border-radius: 5px;
         transition: color 0.2s ease;
         transition: background-color 0.3s ease;

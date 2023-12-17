@@ -13,12 +13,38 @@
         grid-template-columns: repeat(2, 1fr);
         margin: 10px;
         padding: 3px;
-        background-color: $cl2;
+        background-color: $colorButton;
         border-radius: 5px;
+
+        &:hover {
+            background-color: $colorButtonHover;
+            transition: background-color 0.1s ease;
+        }
+
+        & .content__icon {
+            color: $backgroundPage;
+            display: flex;
+            align-self: center;
+            justify-self: center;
+        }
+
+        & .content__winsNums {
+            color: $colorText;
+            display: flex;
+            align-self: center;
+            justify-self: center;
+            cursor: default;
+
+            &::selection {
+                background-color: transparent;
+            }
+        }
+
+
     }
 
     &__reset {
-        color: $cl2;
+        color: $colorButton;
         font-size: 0.8em;
 
         i {
@@ -28,24 +54,8 @@
         }
 
         :hover {
-            color: $cl1;
+            color: $colorButtonHover;
             transition: 0.1s color ease;
         }
-    }
-}
-
-.content {
-    &__icon {
-        color: $cl1;
-        display: flex;
-        align-self: center;
-        justify-self: center;
-    }
-
-    &__winsNums {
-        color: $cl5;
-        display: flex;
-        align-self: center;
-        justify-self: center;
     }
 }

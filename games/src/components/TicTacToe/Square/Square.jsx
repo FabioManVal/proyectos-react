@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import './Square.scss';
 
+import { classForIndex } from '../../../utils/TicTacToe/square';
+
 export function Square({ children, updateBoard, index, isSelected, className, }) {
 
     const selected = isSelected ? `${className} ${className + '--is-selected'}` : className;
@@ -11,7 +13,7 @@ export function Square({ children, updateBoard, index, isSelected, className, })
     }
 
     return (
-        <div className={selected} onClick={handlerClick}>
+        <div className={classForIndex(index, selected)} onClick={handlerClick}>
             {children}
         </div >
     );
