@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './WinnerModal.scss';
 
 import { createTurn } from '../../../utils/TicTacToe/turn';
 

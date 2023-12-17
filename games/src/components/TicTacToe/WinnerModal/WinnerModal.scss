@@ -3,7 +3,7 @@
 .winner {
     width: 100vw;
     height: 100vh;
-    background-color: #000000a4;
+    background-color: #000;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -26,26 +26,26 @@
 
 .notification {
     &__title {
-        font-size: map-get($map: $fontSize, $key: 'fs2.5');
-        color: map-get($map: $tictactoe, $key: 'secondColor');
+        font-size: $sz25;
+        color: $cl2;
 
         i {
-            color: map-get($map: $tictactoe, $key: 'secondColor');
+            color: $cl2;
         }
     }
 }
 
 .reset {
     &__button {
-        color: map-get($map: $tictactoe, $key: 'firstColor');
-        font-size: map-get($map: $fontSize, $key: 'fs4');
+        color: $cl1;
+        font-size: $sz4;
         margin-top: 0.7em;
         transition: color 0.1s ease;
         cursor: pointer;
         padding: 0;
 
         &:hover {
-            color: map-get($map: $tictactoe, $key: 'secondColor');
+            color: $cl2;
             transition: color 0.1s ease;
         }
     }

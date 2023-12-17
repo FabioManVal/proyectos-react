@@ -23,6 +23,6 @@ export function Board({ board, update }) {
 }
 
 Board.propTypes = {
-    board: PropTypes.array.isRequired,
+    board: PropTypes.string,
     update: PropTypes.func.isRequired
 }

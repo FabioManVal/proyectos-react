@@ -7,7 +7,7 @@ import { newWinner } from '../../utils/TicTacToe/winner';
 import { Board } from '../../components/TicTacToe/Board/Board';
 import { Win } from '../../components/TicTacToe/Win/Win';
 import { Turn } from '../../components/TicTacToe/Turn/Turn';
-// import { WinnerModal } from '../../components/TicTacToe/WinnerModal/WinnerModal';
+import { WinnerModal } from '../../components/TicTacToe/WinnerModal/WinnerModal';
 
 /* Constants */
 import { TURNS } from '../../constants';
@@ -106,6 +106,7 @@ export function TicTacToe() {
                             <Turn turn={turn} />
                         </footer>
                     </div>
+                    <WinnerModal resetGame={resetGame} winner={winner} />
                 </div>
                 {/* <div className="game__tictactoe">
                     <h1 className="tictactoe__title">Tic Tac Toe</h1>

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './Square.scss';
 
 export function Square({ children, updateBoard, index, isSelected, className, }) {
 
