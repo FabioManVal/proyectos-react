@@ -13,23 +13,24 @@
         grid-template-columns: repeat(2, 1fr);
         margin: 10px;
         padding: 3px;
-        background-color: $colorButton;
+        background-color: $colorButtonNormal;
         border-radius: 5px;
 
         &:hover {
-            background-color: $colorButtonHover;
+            background-color: $colorButtonNormalHover;
+            box-shadow: 0px 0px 5px 1px $colorButtonNormal;
             transition: background-color 0.1s ease;
         }
 
         & .content__icon {
-            color: $backgroundPage;
+            color: $colorBackground;
             display: flex;
             align-self: center;
             justify-self: center;
         }
 
         & .content__winsNums {
-            color: $colorText;
+            color: $colorNormalText;
             display: flex;
             align-self: center;
             justify-self: center;
@@ -44,7 +45,7 @@
     }
 
     &__reset {
-        color: $colorButton;
+        color: $colorButtonDanger;
         font-size: 0.8em;
 
         i {
@@ -54,7 +55,7 @@
         }
 
         :hover {
-            color: $colorButtonHover;
+            color: $colorButtonDangerHover;
             transition: 0.1s color ease;
         }
     }

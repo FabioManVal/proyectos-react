@@ -1,61 +1,56 @@
+@use '../../../scss/index.scss' as *;
+
 .showNumber {
     // background-color: palegoldenrod;
     position: relative;
-    font-size: map-get($map: $fontSize, $key: 'fs3');
+    font-size: $sz3;
     display: flex;
     justify-content: center;
 
-    &__number {
+    .number {
         position: relative;
         width: max-content;
-        color: map-get($map: $guessNumber, $key: 'firstColor');
-        font-size: map-get($map: $fontSize, $key: 'fs4');
+        color: $colorNormalText;
+        font-size: $sz4;
         padding: 12px;
         border-radius: 5px;
         z-index: 2;
+
+        &__display {
+            position: relative;
+            width: max-content;
+            z-index: 2;
+
+            &--mirror {
+                position: absolute;
+                width: max-content;
+                top: 0.75rem;
+                left: 1rem;
+                color: $colorButtonSuccessHover;
+                z-index: 1;
+            }
+        }
     }
 
-    &__icon {
+    .icon {
         position: relative;
         display: flex;
         align-items: center;
-        color: map-get($map: $guessNumber, $key: 'firstColor');
-        font-size: map-get($map: $fontSize, $key: 'fs4');
-        z-index: 2;
-    }
-}
-
-.number {
-    &__display {
-        position: relative;
-        width: max-content;
+        color: $colorNormalText;
+        font-size: $sz4;
         z-index: 2;
 
-        &--mirror {
-            position: absolute;
-            width: max-content;
-            top: 0.8rem;
-            left: 1rem;
-            color: map-get($map: $guessNumber, $key: 'thirdColor');
-            z-index: 1;
-        }
-    }
-}
+        &__arrow {
+            position: relative;
+            z-index: 2;
 
-.icon {
-    display: flex;
-    align-items: center;
-
-    &__arrow {
-        position: relative;
-        z-index: 2;
-
-        &--mirror {
-            position: absolute;
-            color: map-get($map: $guessNumber, $key: 'thirdColor');
-            left: 0.15rem;
-            top: 0.75rem;
-            z-index: 1;
+            &--mirror {
+                position: absolute;
+                color: $colorButtonSuccessHover;
+                left: 0.15rem;
+                top: 0.75rem;
+                z-index: 1;
+            }
         }
     }
 }

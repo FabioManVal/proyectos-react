@@ -3,20 +3,19 @@
 .winner {
     width: 100vw;
     height: 100vh;
-    background-color: #000;
+    background-color: rgba($color: #0a0a0a, $alpha: .9);
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 
     &__notification {
-        background-color: $cl3;
-        color: #000;
+        background-color: $colorBackground;
         width: 30rem;
-        height: 15rem;
+        height: max-content;
         border-radius: 10px;
-        border: 2px solid $cl2;
-        box-shadow: 0px 0px 10px 1px $cl1;
+        box-shadow: 0px 0px 10px 1px $colorTitleText;
+        padding: $sz1;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -27,17 +26,21 @@
 .notification {
     &__title {
         font-size: $sz25;
-        color: $cl2;
+        color: $colorTitleText;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         i {
-            color: $cl2;
+            font-size: $sz4;
+            color: $colorButtonNormalHover;
         }
     }
 }
 
 .reset {
     &__button {
-        color: $cl1;
+        color: $colorNormalText;
         font-size: $sz4;
         margin-top: 0.7em;
         transition: color 0.1s ease;
@@ -45,7 +48,7 @@
         padding: 0;
 
         &:hover {
-            color: $cl2;
+            color: $colorTitleText;
             transition: color 0.1s ease;
         }
     }

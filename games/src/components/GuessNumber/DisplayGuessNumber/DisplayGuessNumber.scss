@@ -1,28 +1,28 @@
+@use '../../../scss/index.scss' as *;
+
 .displayGuessNumber {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 8em;
-    color: map-get($map: $guessNumber, $key: 'firstColor');
+    color: $colorNormalText;
 
-    &__show {
-        position: absolute;
+    .show {
+        position: relative;
         top: -10rem;
 
-        &--mirror {
-            position: absolute;
-            top: 0;
-            left: .4rem;
-            z-index: 1;
-            color: map-get($map: $guessNumber, $key: 'thirdColor');
-        }
-    }
-}
+        &__number {
+            position: relative;
+            z-index: 2;
 
-.show {
-    &__number {
-        position: relative;
-        z-index: 2;
+            &--mirror {
+                position: absolute;
+                top: 0;
+                left: .15rem;
+                z-index: 1;
+                color: $colorButtonSuccessHover;
+            }
+        }
     }
 }

@@ -1,13 +1,15 @@
+@use '../../../scss/index.scss' as *;
+
 .inputNumber {
     display: flex;
     flex-direction: row;
     width: max-content;
     padding: 0.2em;
     border-radius: 5px;
-    font-size: map-get($map: $fontSize, $key: 'fs2.5');
-    color: map-get($map: $guessNumber, $key: 'thirdColor');
-    background-color: map-get($map: $guessNumber, $key: 'secondColor');
-    box-shadow: 1px 1px 8px 1px map-get($map: $guessNumber, $key: 'thirdColor');
+    font-size: $sz25;
+    color: $colorBackground;
+    background-color: $colorButtonSuccess;
+    box-shadow: 1px 1px 8px 1px $colorButtonSuccessHover;
 
     &__title {
         position: relative;
@@ -16,7 +18,7 @@
             position: absolute;
             top: 0;
             left: -4px;
-            color: map-get($map: $guessNumber, $key: 'firstColor');
+            color: $colorButtonSuccessHover;
         }
     }
 
@@ -24,8 +26,21 @@
         font-size: 2.0rem;
         display: flex;
         align-items: center;
-        color: map-get($map: $guessNumber, $key: 'fourthColor');
-        font-weight: map-get($map: $fontWeight, $key: 'fw700');
+        color: $colorNormalText;
+        font-weight: $fw700;
+        position: relative;
+
+        & .number__content {
+            position: relative;
+            z-index: 2;
+
+            &--mirror {
+                position: absolute;
+                color: $colorBackground;
+                left: 0.15rem;
+                z-index: 1;
+            }
+        }
     }
 
 }

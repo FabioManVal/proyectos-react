@@ -5,8 +5,8 @@
         display: grid;
         align-items: center;
         justify-content: center;
-        border: 1px solid $colorText;
-        color: $colorButtonHover;
+        border: 1px solid $colorNormalText;
+        color: $colorButtonNormalHover;
         font-size: $sz4;
         font-weight: $fw700;
         cursor: pointer;
@@ -38,14 +38,14 @@
 .turn {
     &__square {
         padding: $sz1 $sz15;
-        color: $colorButton;
+        color: $colorButtonNormal;
         font-weight: $fw700;
         transition: color 0.2s ease;
     }
 
     &__square--is-selected {
-        background-color: $colorButtonHover;
-        color: $backgroundPage;
+        background-color: $colorButtonNormalHover;
+        color: $colorBackground;
         border-radius: 5px;
         transition: color 0.2s ease;
         transition: background-color 0.3s ease;

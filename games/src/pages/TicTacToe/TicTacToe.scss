@@ -11,8 +11,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: $backgroundPage;
-        color: $colorText;
+        background-color: $colorBackground;
+        color: $colorNormalText;
     }
 }
 
@@ -49,12 +49,12 @@
     &__button {
         height: max-content;
         width: max-content;
-        color: $colorButton;
+        color: $colorButtonNormal;
         cursor: pointer;
         font-size: $sz4;
 
         &:hover {
-            color: $colorButtonHover;
+            color: $colorButtonNormalHover;
         }
     }
 }

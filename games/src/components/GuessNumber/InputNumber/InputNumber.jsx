@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './InputNumber.scss';
 
 export function InputNumber({ number }) {
 
@@ -10,7 +11,10 @@ export function InputNumber({ number }) {
                     <i className="title__icon bi bi-caret-right-fill"></i>
                 </div>
             </header>
-            <footer className='inputNumber__number'>{number}</footer>
+            <footer className='inputNumber__number'>
+                <p className="number__content">{number}</p>
+                <p className="number__content number__content--mirror">{number}</p>
+            </footer>
         </section>
     );
 }
