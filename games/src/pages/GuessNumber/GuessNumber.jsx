@@ -28,131 +28,110 @@ export function GuessNumber() {
     // Almacena una lista de los números que están debajo del número a adivinar.
     const [tooLow, setTooLow] = useState([]);
 
+
+    const insertNumberToList = (tooLow, tooTall, insertNumber, guessNumber) => {
+        if (insertNumber > guessNumber) {
+            if (tooTall.length > 0) {
+                setTooTall(tooTall);
+
+            }
+        }
+        if (insertNumber < guessNumber) {
+            if (tooLow.length > 0) {
+                setTooLow(tooLow);
+            }
+        }
+    }
+
+    const sortAndFocusNumbers = (arrTooNumbers, insertNumber, alertClass = 'repeatNumber') => {
+        // Ordena los números de menor a mayor.
+        const sortArrNumbers = sortNumbers(
+            [...arrTooNumbers],
+            ((menor, mayor) => menor - mayor)
+        );
+
+        // retorna la posición del número a insertar si este existe en la lista.
+        const indexRepeatNumber = repeatNumber(
+            sortArrNumbers,
+            insertNumber,
+            alertClass
+        );
+
+        // Asigna una clase como modificador para el elemento repetido, y retorna la lista con ese dato modificado.
+        const newArrNumbers = focusRepeatNumber(
+            sortArrNumbers,
+            indexRepeatNumber,
+            insertNumber,
+            alertClass
+        );
+
+        return newArrNumbers
+    }
+
+
+    const countAttempts = (insertNumber, tooLow, tooTall, tries) => {
+        if (
+            !existNumber(insertNumber, tooTall) &&
+            !existNumber(insertNumber, tooLow)) {
+            setTries(tries + 1);
+        }
+    }
+
+
+
     // Se encarga de agregar el número a la lista tooTall o tooLow
     useEffect(() => {
-        const addNumber = ((event) => {
-            if (isNumber(event.key)) {
-                const inputNumber = event.key;
-                setInsertNumber(insertNumber + inputNumber)
-            }
+        const handleKeyDown = ((event) => {
+            const key = event.key;
 
-            if (event.key === 'Enter') {
-                if (insertNumber !== 0 && insertNumber !== '') {
-                    const alertClass = 'repeatNumber'
-                    const arrTall = sortNumbers([...tooTall], ((a, b) => a - b));
-                    const newTall = focusRepeatNumber(
-                        arrTall,
-                        repeatNumber(arrTall, insertNumber, alertClass),
-                        insertNumber,
-                        alertClass
-                    );
-                    const arrLow = sortNumbers([...tooLow], ((a, b) => a - b));
-                    const newLow = focusRepeatNumber(
-                        arrLow,
-                        repeatNumber(arrLow, insertNumber, alertClass),
-                        insertNumber,
-                        alertClass
-                    );
+            switch (key) {
+                case 'Enter':
+                    if (isNumber(insertNumber) && insertNumber !== 0) {
 
-                    if (insertNumber > guessNumber) {
-                        if (newTall.length > 0) {
-                            setTooTall(newTall);
+                        const newTooLow = sortAndFocusNumbers(tooLow, insertNumber);
+                        const newTooTall = sortAndFocusNumbers(tooTall, insertNumber);
 
+                        insertNumberToList(newTooLow, newTooTall, insertNumber, guessNumber);
+
+                        if (insertNumber !== guessNumber) {
+                            countAttempts(insertNumber, tooLow, tooTall, tries);
+                        } else if (insertNumber > guessNumber) {
+                            setAlertNumber([insertNumber, alertNumber[1]]);
+                        } else {
+                            setAlertNumber([alertNumber[0], insertNumber]);
                         }
-                    }
-                    if (insertNumber < guessNumber) {
-                        if (newLow.length > 0) {
-                            setTooLow(newLow);
+
+                        if (insertNumber == guessNumber) {
+                            setWinnerNumber(insertNumber);
                         }
+                        setInsertNumber('');
                     }
-                    setInsertNumber('');
-                }
-            }
-        })
+                    break;
 
-        window.addEventListener('keydown', addNumber)
-
-        return () => {
-            window.removeEventListener('keydown', addNumber);
-        }
-    }, [insertNumber, tooTall, tooLow, guessNumber]);
-
-    // Se encargara de contar los intentos del jugador, al momento de adivinar el número.
-    useEffect(() => {
-        const countTries = ((event) => {
-            if (event.key === 'Enter') {
-                if (!isNaN(insertNumber) && insertNumber !== guessNumber && insertNumber !== '') {
-                    if (
-                        !existNumber(insertNumber, tooTall) &&
-                        !existNumber(insertNumber, tooLow)) {
-                        console.log(insertNumber, typeof insertNumber)
-                        setTries(tries + 1);
+                case 'Backspace':
+                    if (event.ctrlKey && key === 'Backspace') {
+                        setInsertNumber('');
+                    } else {
+                        setInsertNumber(insertNumber.slice(0, -1));
                     }
-                }
+
+                    break;
+
+                default:
+                    if (isNumber(key)) {
+                        setInsertNumber(insertNumber + key);
+                    }
             }
+
         })
 
-        window.addEventListener('keydown', countTries);
+        window.addEventListener('keydown', handleKeyDown)
 
         return () => {
-            window.removeEventListener('keydown', countTries)
+            window.removeEventListener('keydown', handleKeyDown);
         }
-    }, [tries, guessNumber, insertNumber, tooTall, tooLow]);
+    }, [insertNumber, tooTall, tooLow, guessNumber, alertNumber, tries]);
 
-    // Me agrega el número insertado, al valor encargado de mostrar, sí el número se ingresado en el lado de los tooTall o tooLow
-    useEffect(() => {
-        const addAlertNumber = ((event) => {
-            if (event.key === 'Enter') {
-                if (insertNumber !== 0 && insertNumber !== '') {
-                    if (insertNumber > guessNumber) setAlertNumber([insertNumber, alertNumber[1]]);
-                    if (insertNumber < guessNumber) setAlertNumber([alertNumber[0], insertNumber]);
-                }
-            }
-        })
-
-        window.addEventListener('keydown', addAlertNumber);
-
-        return () => {
-            window.removeEventListener('keydown', addAlertNumber);
-        }
-    }, [insertNumber, alertNumber, guessNumber]);
-
-    // Se encarga de validar si el número insertado, es el número que debemos de encontrar.
-    useEffect(() => {
-        const addWinnerNumber = () => {
-            if (insertNumber == guessNumber) {
-                setWinnerNumber(insertNumber);
-            }
-        }
-        window.addEventListener('keydown', addWinnerNumber);
-
-        return () => {
-            window.removeEventListener('keydown', addWinnerNumber);
-        }
-    }, [insertNumber, guessNumber]);
-
-    // Modifica el numero insertado cuando se presione una tecla.
-    useEffect(() => {
-
-        const removeNumber = (event) => {
-
-            // Elimina todo el número que se estaba insertando, utilizando Ctrl+Backspace.
-            if (event.ctrlKey && event.key === 'Backspace') {
-                setInsertNumber('');
-            }
-
-            // Elimina el ultimo número, del número del input oprimiendo Backspace. 
-            if (event.key === 'Backspace') {
-                setInsertNumber(insertNumber.slice(0, -1));
-            }
-        }
-
-        window.addEventListener('keydown', removeNumber)
-
-        return () => {
-            window.removeEventListener('keydown', removeNumber);
-        }
-    }, [insertNumber]);
 
 
     return (
