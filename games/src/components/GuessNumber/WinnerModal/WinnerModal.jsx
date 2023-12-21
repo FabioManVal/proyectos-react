@@ -1,12 +1,34 @@
 import PropTypes from 'prop-types';
 import './WinnerModal.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { isNumber } from '../../../utils/GuessNumber/validations';
 
-export function WinnerModal({ children, times, newGuessNumber }) {
+export function WinnerModal({ children, times, guessNumber, newGuessNumber }) {
 
     const [insertNumber, setInsertNumber] = useState('');
     const [randomNumber, setRandomNumber] = useState(0);
+
+    useEffect(() => {
+        if (Number(children) === Number(guessNumber)) {
+            const addNumber = ((event) => {
+                const key = event.key;
+
+                switch (key) {
+                    default:
+                        if (isNumber(key)) {
+                            setInsertNumber(insertNumber + key);
+                        }
+                }
+            })
+
+            window.addEventListener('keydown', addNumber);
+
+            return () => {
+                window.removeEventListener('keydown', addNumber);
+            }
+        }
+
+    }, [insertNumber, guessNumber, children]);
 
 
     // const onChange = (number) => {

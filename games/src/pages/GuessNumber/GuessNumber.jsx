@@ -133,7 +133,7 @@ export function GuessNumber() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         }
-    }, [insertNumber, tooTall, tooLow, guessNumber, alertNumber, tries]);
+    }, [insertNumber, tooTall, tooLow, guessNumber, alertNumber, tries, winnerNumber]);
 
 
 
