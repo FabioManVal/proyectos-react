@@ -17,5 +17,5 @@ export function Tries({ children }) {
 }
 
 Tries.propTypes = {
-    children: PropTypes.number
+    children: PropTypes.number.isRequired
 }

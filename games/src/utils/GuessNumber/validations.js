@@ -1,7 +1,8 @@
 // Retorno unicamente números.
 export const isNumber = (number) => {
-    if (!isNaN(number) && number !== '.' && number !== '') {
-        return number;
+    const num = Number(number);
+    if (!isNaN(num) && number !== '.' && number !== 0) {
+        return num;
     }
     return null;
 }

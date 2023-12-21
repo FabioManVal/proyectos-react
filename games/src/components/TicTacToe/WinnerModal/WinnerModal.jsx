@@ -12,9 +12,9 @@ export function WinnerModal({ winner, resetGame }) {
             {
                 (winner !== null) ?
                     <section className="winner">
-                        <div className="winner__notification">
+                        <div className="winner__notification notification">
                             <header className="notification__title">{modalTitle} {createTurn(winner)}</header>
-                            <footer className="notification__reset">
+                            <footer className="notification__reset reset">
                                 <button onClick={resetGame} className="reset__button">
                                     <i className="bi bi-arrow-clockwise"></i>
                                 </button>

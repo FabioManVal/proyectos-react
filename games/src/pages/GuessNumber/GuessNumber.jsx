@@ -83,28 +83,31 @@ export function GuessNumber() {
     useEffect(() => {
         const handleKeyDown = ((event) => {
             const key = event.key;
+            let tmpInsertNumber;
 
             switch (key) {
                 case 'Enter':
-                    if (isNumber(insertNumber) && insertNumber !== 0) {
+                    if (winnerNumber !== guessNumber) {
+                        tmpInsertNumber = Number(insertNumber);
+                        if (isNumber(tmpInsertNumber)) {
 
-                        const newTooLow = sortAndFocusNumbers(tooLow, insertNumber);
-                        const newTooTall = sortAndFocusNumbers(tooTall, insertNumber);
+                            const newTooLow = sortAndFocusNumbers(tooLow, tmpInsertNumber);
+                            const newTooTall = sortAndFocusNumbers(tooTall, tmpInsertNumber);
 
-                        insertNumberToList(newTooLow, newTooTall, insertNumber, guessNumber);
+                            insertNumberToList(newTooLow, newTooTall, tmpInsertNumber, guessNumber);
 
-                        if (insertNumber !== guessNumber) {
-                            countAttempts(insertNumber, tooLow, tooTall, tries);
-                        } else if (insertNumber > guessNumber) {
-                            setAlertNumber([insertNumber, alertNumber[1]]);
-                        } else {
-                            setAlertNumber([alertNumber[0], insertNumber]);
+                            if (tmpInsertNumber !== guessNumber) {
+                                countAttempts(tmpInsertNumber, tooLow, tooTall, tries);
+                                if (tmpInsertNumber > guessNumber) {
+                                    setAlertNumber([tmpInsertNumber, alertNumber[1]]);
+                                } else {
+                                    setAlertNumber([alertNumber[0], tmpInsertNumber]);
+                                }
+                            } else if (tmpInsertNumber == guessNumber) {
+                                setWinnerNumber(tmpInsertNumber);
+                            }
+                            setInsertNumber('');
                         }
-
-                        if (insertNumber == guessNumber) {
-                            setWinnerNumber(insertNumber);
-                        }
-                        setInsertNumber('');
                     }
                     break;
 
@@ -166,7 +169,7 @@ export function GuessNumber() {
 
                     {
                         winnerNumber !== 0 ?
-                            <WinnerModal>{winnerNumber}</WinnerModal> :
+                            <WinnerModal times={tries}>{winnerNumber}</WinnerModal> :
                             ''
                     }
                     <Tries>{tries}</Tries>

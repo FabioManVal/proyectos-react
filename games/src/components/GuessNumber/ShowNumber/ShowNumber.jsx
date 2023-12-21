@@ -22,6 +22,6 @@ export function ShowNumber({ children, isToo }) {
 }
 
 ShowNumber.propTypes = {
-    children: PropTypes.string.isRequired,
+    children: PropTypes.number.isRequired,
     isToo: PropTypes.bool.isRequired,
 }

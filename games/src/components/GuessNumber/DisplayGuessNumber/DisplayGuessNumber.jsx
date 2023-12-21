@@ -25,6 +25,6 @@ export function DisplayGuessNumber({ children, number }) {
 }
 
 DisplayGuessNumber.propTypes = {
-    children: PropTypes.string,
+    children: PropTypes.number,
     number: PropTypes.number
 };

@@ -1,3 +1,4 @@
+
 // Se busca el número repetido de la lista, para aplicarle un estilo que lo resalte.
 export const repeatNumber = (arr, data, className) => {
     for (let position = 0; position < arr.length; position++) {
