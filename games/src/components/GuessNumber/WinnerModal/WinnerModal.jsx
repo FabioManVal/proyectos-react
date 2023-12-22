@@ -3,48 +3,9 @@ import './WinnerModal.scss';
 import { useEffect, useState } from 'react';
 import { isNumber } from '../../../utils/GuessNumber/validations';
 
-export function WinnerModal({ children, times, guessNumber, newGuessNumber }) {
+export function WinnerModal({ children, times, winnerNumber, newGuessNumber }) {
 
-    const [insertNumber, setInsertNumber] = useState('');
-    const [randomNumber, setRandomNumber] = useState(0);
-
-    useEffect(() => {
-        if (Number(children) === Number(guessNumber)) {
-            const addNumber = ((event) => {
-                const key = event.key;
-
-                switch (key) {
-                    default:
-                        if (isNumber(key)) {
-                            setInsertNumber(insertNumber + key);
-                        }
-                }
-            })
-
-            window.addEventListener('keydown', addNumber);
-
-            return () => {
-                window.removeEventListener('keydown', addNumber);
-            }
-        }
-
-    }, [insertNumber, guessNumber, children]);
-
-
-    // const onChange = (number) => {
-    //     if (isNumber(Number(number))) {
-    //         setInsertNumber(insertNumber + number)
-    //     }
-    // };
-
-    // const submit = (event) => {
-    //     event.preventDefault();
-    //     generateRandomNumber(number);
-    //     const random = Math.floor(Math.random() * insertNumber + 1);
-    //     setNumber('');
-    //     setRandomNumber(rando);
-    //     newGuessNumber(rando);
-    // };
+    // const [insertNumber, setInsertNumber] = useState(children);
 
 
     return (
@@ -57,8 +18,8 @@ export function WinnerModal({ children, times, guessNumber, newGuessNumber }) {
                             <p className="text__show text__show--mirror">Número</p>
                         </div>
                         <div className="title__value value">
-                            <span className="value__win">{children}</span>
-                            <span className="value__win value__win--mirror">{children}</span>
+                            <span className="value__win">{winnerNumber}</span>
+                            <span className="value__win value__win--mirror">{winnerNumber}</span>
                         </div>
                     </div>
                     <div className="info__content content">
@@ -79,7 +40,7 @@ export function WinnerModal({ children, times, guessNumber, newGuessNumber }) {
                             ¿Desea intentar adivinar otro número?</p>
                     </div>
                     <div className="info__number">
-                        {insertNumber}
+                        {`Número entre el 1 al ${children}`}
                     </div>
                 </footer>
             </div>
@@ -88,6 +49,8 @@ export function WinnerModal({ children, times, guessNumber, newGuessNumber }) {
 }
 
 WinnerModal.propTypes = {
-    children: PropTypes.number.isRequired,
+    children: PropTypes.string.isRequired,
+    winnerNumber: PropTypes.number,
+    guessNumber: PropTypes.number,
     times: PropTypes.number,
 }

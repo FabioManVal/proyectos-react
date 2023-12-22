@@ -128,7 +128,11 @@ export function GuessNumber() {
 
         })
 
+        // if (+insertNumber === +guessNumber) {
+        //     window.removeEventListener('keydown', handleKeyDown);
+        // } else {
         window.addEventListener('keydown', handleKeyDown)
+        // }
 
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
@@ -145,7 +149,9 @@ export function GuessNumber() {
                         <div className="title__text">Adivina el número</div>
                         <div className="title__text title__text--mirror">Adivina el número</div>
                     </h1>
-                    <InputNumber number={insertNumber}></InputNumber>
+                    {winnerNumber === guessNumber ?
+                        <InputNumber number={''}></InputNumber> :
+                        <InputNumber number={insertNumber}></InputNumber>}
 
                     <div className="guessNumber__alertNumber">
                         {alertNumber[0] !== 0 || alertNumber[1] !== 0 ?
@@ -169,7 +175,7 @@ export function GuessNumber() {
 
                     {
                         winnerNumber !== 0 ?
-                            <WinnerModal times={tries}>{winnerNumber}</WinnerModal> :
+                            <WinnerModal times={tries} winnerNumber={winnerNumber}>{insertNumber}</WinnerModal> :
                             ''
                     }
                     <Tries>{tries}</Tries>
