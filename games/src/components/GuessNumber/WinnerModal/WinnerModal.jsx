@@ -35,9 +35,21 @@ export function WinnerModal({ children, times, winnerNumber }) {
                         <p className="info__text info__text--mirror">
                             ¿Desea intentar adivinar otro número?</p>
                     </div>
-                    <div className="info__number number">
-                        <p className="number__text">{`Inserte un número entre el 1 al ${children}`}</p>
-                        <p className="number__text number__text--mirror">{`Inserte un número entre el 1 al ${children}`}</p>
+                    <div className="info__content content">
+                        <div className="content__number number">
+                            <div className="number__start start">
+                                <p className="start__text">1</p>
+                                <p className="start__text start__text--mirror">1</p>
+                            </div>
+                            <div className="number__description description">
+                                <p className="description__text">al</p>
+                                <p className="description__text description__text--mirror">al</p>
+                            </div>
+                            <div className="number__end end">
+                                <p className="end__text">{children}</p>
+                                <p className="end__text end__text--mirror">{children}</p>
+                            </div>
+                        </div>
                     </div>
                 </footer>
             </div>

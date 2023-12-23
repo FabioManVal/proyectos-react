@@ -2,12 +2,9 @@
 
 .winnerModal {
     position: absolute;
+    @include flex(column, center, center);
     width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: rgba($color: #000000, $alpha: 0.8);
     z-index: 3;
     font-size: $sz2;
@@ -15,32 +12,26 @@
     .modal {
         width: max-content;
         height: max-content;
+        @include flex(column, center, center);
         background-color: $colorButtonSuccess;
         padding: $sz15;
         border-radius: 5px;
         box-shadow: 0px 0px 5px 0px $colorButtonSuccessHover;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
         .info {
-            display: flex;
-            flex-direction: row;
+            @include flex(row, inherit, none);
             gap: $sz2;
             color: $colorNormalText;
             margin-bottom: $sz2;
 
             .title {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                @include flex(column, inherit, center);
                 background-color: rgba($color: #000000, $alpha: 0.8);
                 padding: $sz1;
                 border-radius: 5px;
 
                 .text {
-                    display: flex;
-                    flex-direction: column;
+                    @include flex(column, inherit, inherit);
                     position: relative;
                     font-weight: $fw700;
                     font-style: italic;
@@ -61,11 +52,12 @@
                 }
 
                 .value {
-                    display: flex;
-                    flex-direction: column;
+                    @include flex(column, inherit, inherit);
                     position: relative;
 
                     &__win {
+                        width: max-content;
+                        height: max-content;
                         position: relative;
                         z-index: 2;
 
@@ -81,16 +73,13 @@
             }
 
             .content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                @include flex(column, inherit, center);
                 background-color: rgba($color: #000000, $alpha: 0.8);
                 padding: $sz1;
                 border-radius: 5px;
 
                 .text {
-                    display: flex;
-                    flex-direction: column;
+                    @include flex(column, inherit, inherit);
                     position: relative;
                     font-weight: $fw700;
                     font-style: italic;
@@ -111,8 +100,7 @@
                 }
 
                 .value {
-                    display: flex;
-                    flex-direction: column;
+                    @include flex(column, inherit, inherit);
                     position: relative;
 
                     &__times {
@@ -133,8 +121,7 @@
 
         .actions {
             .info {
-                display: flex;
-                flex-direction: column;
+                @include flex(column, none, none);
                 font-style: italic;
                 position: relative;
                 width: 100%;
@@ -155,22 +142,59 @@
 
             }
 
-            .number {
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                font-size: $sz1;
+            .content {
+                @include flex(column, center, center);
 
-                &__text {
-                    position: relative;
-                    z-index: 2;
+                .number {
+                    @include grid(column, 3, none, inherit);
+                    @include wh(max-content, max-content);
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px; // @include flex(row, inherit, center);
+                    background-color: aqua;
+                    padding: 10px;
 
-                    &--mirror {
-                        position: absolute;
-                        top: 0;
-                        left: 0.15rem;
-                        z-index: 1;
-                        color: $colorButtonSuccessHover;
+                    .start {
+                        @include wh(max-content, max-content);
+                        @include flex(column, center, inherit);
+                        position: relative;
+                        background-color: $colorBackground;
+
+                        &__text {
+                            position: relative;
+                            z-index: 2;
+                            width: max-content;
+                            height: max-content;
+
+                            &--mirror {
+                                position: absolute;
+                                width: max-content;
+                                height: max-content;
+                                display: flex;
+                                justify-self: center;
+                                align-self: center;
+                                z-index: 1;
+                                color: $colorButtonSuccessHover;
+                            }
+                        }
+                    }
+
+                    .description {
+                        @include wh(max-content, max-content);
+                        background-color: purple;
+
+                        &__text {
+                            &--mirror {}
+                        }
+                    }
+
+                    .end {
+                        @include wh(max-content, max-content);
+                        background-color: pink;
+
+                        &__text {
+                            &--mirror {}
+                        }
                     }
                 }
             }

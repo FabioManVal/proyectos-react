@@ -1,0 +1,41 @@
+@mixin flex($direction, $justify: 'none', $align: 'none') {
+    display: flex;
+    flex-direction: $direction;
+
+    @if $justify !='none' {
+        justify-content: $justify;
+    }
+
+    @if $align !='none' {
+        align-items: $align;
+    }
+
+}
+
+@mixin grid($template, $repeat: 0, $justify: none, $align: none, $size: 1fr) {
+
+    display: grid;
+
+    @if $repeat !=0 and template !=none {
+        @if $template ==column {
+            grid-template-columns: repeat($repeat, $size);
+        }
+
+        @else if $template ==row {
+            grid-template-rows: repeat($repeat, $size);
+        }
+    }
+
+    @if $justify !=none {
+        justify-content: $justify;
+    }
+
+    @if $align !=none {
+        align-content: $align;
+    }
+}
+
+@mixin wh($width, $height) {
+    width: $width;
+    height: $height;
+}
