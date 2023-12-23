@@ -152,6 +152,27 @@
                         color: $colorButtonSuccessHover;
                     }
                 }
+
+            }
+
+            .number {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                font-size: $sz1;
+
+                &__text {
+                    position: relative;
+                    z-index: 2;
+
+                    &--mirror {
+                        position: absolute;
+                        top: 0;
+                        left: 0.15rem;
+                        z-index: 1;
+                        color: $colorButtonSuccessHover;
+                    }
+                }
             }
         }
     }

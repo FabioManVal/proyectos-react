@@ -1,8 +1,8 @@
 // Retorno unicamente números.
-export const isNumber = (number) => {
-    const num = Number(number);
-    if (!isNaN(num) && number !== '.' && number !== 0) {
-        return num;
+export const isNumber = (numberToValidate) => {
+    const tmpNumber = String(numberToValidate);
+    if (!isNaN(tmpNumber) && !tmpNumber.includes('.')) {
+        return tmpNumber;
     }
     return null;
 }

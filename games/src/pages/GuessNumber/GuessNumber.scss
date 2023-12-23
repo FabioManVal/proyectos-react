@@ -27,7 +27,8 @@ div {
     &__title {
         position: relative;
         font-size: $sz2;
-        margin: 0 auto;
+
+        margin: $sz1 auto;
         color: $colorNormalText;
     }
 

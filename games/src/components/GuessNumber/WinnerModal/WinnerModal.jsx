@@ -1,12 +1,8 @@
 import PropTypes from 'prop-types';
 import './WinnerModal.scss';
-import { useEffect, useState } from 'react';
-import { isNumber } from '../../../utils/GuessNumber/validations';
 
-export function WinnerModal({ children, times, winnerNumber, newGuessNumber }) {
-
+export function WinnerModal({ children, times, winnerNumber }) {
     // const [insertNumber, setInsertNumber] = useState(children);
-
 
     return (
         <section className="winnerModal">
@@ -18,8 +14,8 @@ export function WinnerModal({ children, times, winnerNumber, newGuessNumber }) {
                             <p className="text__show text__show--mirror">Número</p>
                         </div>
                         <div className="title__value value">
-                            <span className="value__win">{winnerNumber}</span>
-                            <span className="value__win value__win--mirror">{winnerNumber}</span>
+                            <p className="value__win">{winnerNumber}</p>
+                            <p className="value__win value__win--mirror">{winnerNumber}</p>
                         </div>
                     </div>
                     <div className="info__content content">
@@ -28,8 +24,8 @@ export function WinnerModal({ children, times, winnerNumber, newGuessNumber }) {
                             <p className="text__show text__show--mirror">Intentos</p>
                         </div>
                         <div className="content__value value">
-                            <span className="value__times">{times}</span>
-                            <span className="value__times value__times--mirror">{times}</span>
+                            <p className="value__times">{times}</p>
+                            <p className="value__times value__times--mirror">{times}</p>
                         </div>
                     </div>
                 </header>
@@ -39,8 +35,9 @@ export function WinnerModal({ children, times, winnerNumber, newGuessNumber }) {
                         <p className="info__text info__text--mirror">
                             ¿Desea intentar adivinar otro número?</p>
                     </div>
-                    <div className="info__number">
-                        {`Número entre el 1 al ${children}`}
+                    <div className="info__number number">
+                        <p className="number__text">{`Inserte un número entre el 1 al ${children}`}</p>
+                        <p className="number__text number__text--mirror">{`Inserte un número entre el 1 al ${children}`}</p>
                     </div>
                 </footer>
             </div>

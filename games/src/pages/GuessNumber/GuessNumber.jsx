@@ -78,6 +78,9 @@ export function GuessNumber() {
     }
 
 
+    const createRandomNumber = (setNumber) => {
+        return Math.floor(Math.random() * setNumber) + 1;
+    }
 
     // Se encarga de agregar el número a la lista tooTall o tooLow
     useEffect(() => {
@@ -94,19 +97,33 @@ export function GuessNumber() {
                             const newTooLow = sortAndFocusNumbers(tooLow, tmpInsertNumber);
                             const newTooTall = sortAndFocusNumbers(tooTall, tmpInsertNumber);
 
-                            insertNumberToList(newTooLow, newTooTall, tmpInsertNumber, guessNumber);
+                            if (+insertNumber !== 0) {
+                                insertNumberToList(newTooLow, newTooTall, tmpInsertNumber, guessNumber);
+                            }
 
                             if (tmpInsertNumber !== guessNumber) {
-                                countAttempts(tmpInsertNumber, tooLow, tooTall, tries);
-                                if (tmpInsertNumber > guessNumber) {
-                                    setAlertNumber([tmpInsertNumber, alertNumber[1]]);
-                                } else {
-                                    setAlertNumber([alertNumber[0], tmpInsertNumber]);
+                                if (+tmpInsertNumber !== 0) {
+                                    countAttempts(tmpInsertNumber, tooLow, tooTall, tries);
+                                    if (tmpInsertNumber > guessNumber) {
+                                        setAlertNumber([tmpInsertNumber, alertNumber[1]]);
+                                    } else {
+                                        setAlertNumber([alertNumber[0], tmpInsertNumber]);
+                                    }
                                 }
                             } else if (tmpInsertNumber == guessNumber) {
                                 setWinnerNumber(tmpInsertNumber);
                             }
                             setInsertNumber('');
+                        }
+                    } else {
+                        if (isNumber(insertNumber)) {
+                            setGuessNumber(createRandomNumber(+insertNumber));
+                            setAlertNumber([0, 0]);
+                            setWinnerNumber(0);
+                            setInsertNumber('');
+                            setTries(0);
+                            setTooTall([]);
+                            setTooLow([]);
                         }
                     }
                     break;
@@ -124,8 +141,8 @@ export function GuessNumber() {
                     if (isNumber(key)) {
                         setInsertNumber(insertNumber + key);
                     }
-            }
 
+            }
         })
 
         // if (+insertNumber === +guessNumber) {
@@ -175,7 +192,7 @@ export function GuessNumber() {
 
                     {
                         winnerNumber !== 0 ?
-                            <WinnerModal times={tries} winnerNumber={winnerNumber}>{insertNumber}</WinnerModal> :
+                            <WinnerModal times={tries} winnerNumber={winnerNumber} >{insertNumber}</WinnerModal> :
                             ''
                     }
                     <Tries>{tries}</Tries>
