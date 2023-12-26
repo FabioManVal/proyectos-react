@@ -1,12 +1,12 @@
-@mixin flex($direction, $justify: 'none', $align: 'none') {
+@mixin flex($direction, $justify: none, $align: none) {
     display: flex;
     flex-direction: $direction;
 
-    @if $justify !='none' {
+    @if $justify !=none {
         justify-content: $justify;
     }
 
-    @if $align !='none' {
+    @if $align !=none {
         align-items: $align;
     }
 

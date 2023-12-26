@@ -11,6 +11,9 @@ import { Tries } from '../../components/GuessNumber/Tries/Tries';
 import { repeatNumber, focusRepeatNumber, sortNumbers } from '../../utils/GuessNumber/insertNumber';
 import { isNumber, existNumber } from '../../utils/GuessNumber/validations';
 
+const createRandomNumber = (setNumber) => {
+    return Math.floor(Math.random() * setNumber) + 1;
+}
 export function GuessNumber() {
 
     // Almacena el número que se esta insertando.
@@ -18,7 +21,8 @@ export function GuessNumber() {
     // Almacena la cantidad de intentos que se necesitaron para ganar.
     const [tries, setTries] = useState(0);
     // Almacena el número a adivinar.
-    const [guessNumber, setGuessNumber] = useState(27);
+    const [maxRange, setMaxRange] = useState(100);
+    const [guessNumber, setGuessNumber] = useState(createRandomNumber(maxRange));
     // Almacena el número ganador.
     const [winnerNumber, setWinnerNumber] = useState(0);
     // Almacena el número más alto y más bajo.
@@ -28,20 +32,6 @@ export function GuessNumber() {
     // Almacena una lista de los números que están debajo del número a adivinar.
     const [tooLow, setTooLow] = useState([]);
 
-
-    const insertNumberToList = (tooLow, tooTall, insertNumber, guessNumber) => {
-        if (insertNumber > guessNumber) {
-            if (tooTall.length > 0) {
-                setTooTall(tooTall);
-
-            }
-        }
-        if (insertNumber < guessNumber) {
-            if (tooLow.length > 0) {
-                setTooLow(tooLow);
-            }
-        }
-    }
 
     const sortAndFocusNumbers = (arrTooNumbers, insertNumber, alertClass = 'repeatNumber') => {
         // Ordena los números de menor a mayor.
@@ -69,18 +59,29 @@ export function GuessNumber() {
     }
 
 
-    const countAttempts = (insertNumber, tooLow, tooTall, tries) => {
-        if (
-            !existNumber(insertNumber, tooTall) &&
+    const addTries = (insertNumber, tooLow, tooTall, tries) => {
+        if (!existNumber(insertNumber, tooTall) &&
             !existNumber(insertNumber, tooLow)) {
-            setTries(tries + 1);
+            return tries + 1
         }
+        return tries
     }
 
-
-    const createRandomNumber = (setNumber) => {
-        return Math.floor(Math.random() * setNumber) + 1;
+    const resetGame = () => {
+        setAlertNumber([0, 0]);
+        setWinnerNumber(0);
+        setInsertNumber('');
+        setTries(0);
+        setTooTall([]);
+        setTooLow([]);
     }
+
+    const addAlertNumber = (insertNumber, guessNumber, arrAlertNumber) => {
+        return insertNumber > guessNumber ?
+            [insertNumber, arrAlertNumber[1]] :
+            [arrAlertNumber[0], insertNumber];
+    }
+
 
     // Se encarga de agregar el número a la lista tooTall o tooLow
     useEffect(() => {
@@ -98,17 +99,15 @@ export function GuessNumber() {
                             const newTooTall = sortAndFocusNumbers(tooTall, tmpInsertNumber);
 
                             if (+insertNumber !== 0) {
-                                insertNumberToList(newTooLow, newTooTall, tmpInsertNumber, guessNumber);
+                                insertNumber > guessNumber ?
+                                    setTooTall(newTooTall) :
+                                    setTooLow(newTooLow);
                             }
 
                             if (tmpInsertNumber !== guessNumber) {
                                 if (+tmpInsertNumber !== 0) {
-                                    countAttempts(tmpInsertNumber, tooLow, tooTall, tries);
-                                    if (tmpInsertNumber > guessNumber) {
-                                        setAlertNumber([tmpInsertNumber, alertNumber[1]]);
-                                    } else {
-                                        setAlertNumber([alertNumber[0], tmpInsertNumber]);
-                                    }
+                                    setTries(addTries(tmpInsertNumber, tooLow, tooTall, tries));
+                                    setAlertNumber(addAlertNumber(tmpInsertNumber, guessNumber, alertNumber));
                                 }
                             } else if (tmpInsertNumber == guessNumber) {
                                 setWinnerNumber(tmpInsertNumber);
@@ -117,13 +116,9 @@ export function GuessNumber() {
                         }
                     } else {
                         if (isNumber(insertNumber)) {
+                            resetGame();
                             setGuessNumber(createRandomNumber(+insertNumber));
-                            setAlertNumber([0, 0]);
-                            setWinnerNumber(0);
-                            setInsertNumber('');
-                            setTries(0);
-                            setTooTall([]);
-                            setTooLow([]);
+                            setMaxRange(+insertNumber);
                         }
                     }
                     break;

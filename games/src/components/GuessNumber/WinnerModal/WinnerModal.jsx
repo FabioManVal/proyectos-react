@@ -35,20 +35,27 @@ export function WinnerModal({ children, times, winnerNumber }) {
                         <p className="info__text info__text--mirror">
                             ¿Desea intentar adivinar otro número?</p>
                     </div>
-                    <div className="info__content content">
+                    <div className="actions__content content">
                         <div className="content__number number">
                             <div className="number__start start">
-                                <p className="start__text">1</p>
-                                <p className="start__text start__text--mirror">1</p>
+                                <div className='start__content content'>
+                                    <p className="content__text">1</p>
+                                    <p className="content__text content__text--mirror">1</p>
+                                </div>
                             </div>
                             <div className="number__description description">
-                                <p className="description__text">al</p>
-                                <p className="description__text description__text--mirror">al</p>
+                                <div className='description__content content'>
+                                    <p className="content__text">al</p>
+                                    <p className="content__text content__text--mirror">al</p>
+                                </div>
                             </div>
-                            <div className="number__end end">
-                                <p className="end__text">{children}</p>
-                                <p className="end__text end__text--mirror">{children}</p>
-                            </div>
+                            {children !== '' ?
+                                <div className="number__end end">
+                                    <div className='end__content content'>
+                                        <p className="content__text">{children}</p>
+                                        <p className="content__text content__text--mirror">{children}</p>
+                                    </div>
+                                </div> : ''}
                         </div>
                     </div>
                 </footer>

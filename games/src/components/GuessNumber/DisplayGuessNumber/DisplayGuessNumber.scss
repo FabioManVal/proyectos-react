@@ -2,18 +2,18 @@
 
 .displayGuessNumber {
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex(column, none, center);
     font-size: 8em;
     color: $colorNormalText;
 
+
     .show {
-        position: relative;
+        @include wh(max-content, max-content);
         top: -10rem;
+        position: relative;
 
         &__number {
-            position: relative;
+            position: inherit;
             z-index: 2;
 
             &--mirror {

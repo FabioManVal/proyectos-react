@@ -1,24 +1,22 @@
 @use '../../../scss/index.scss' as *;
 
 .listNumbers {
-    display: flex;
-    flex-direction: row;
+    @include flex(row, flex-start, flex-start);
+    @include wh(auto, max-content);
     flex-wrap: wrap;
     padding: 0.7rem;
-    margin: 0 $sz1;
+    gap: $sz05 $sz1;
+    margin: $sz1;
     border-radius: 5px;
-    font-size: $sz2;
-    gap: $sz1;
+    font-size: $sz1;
     background-color: $colorButtonSuccess;
     box-shadow: 0px 0px 10px 0px $colorButtonSuccessHover;
 
     .content {
-        width: max-content;
-        height: max-content;
-        display: flex;
+        @include flex(row);
+        @include wh(max-content, max-content);
         padding: .3rem;
         border-radius: 5px;
-        flex-direction: row-reverse;
         background-color: $colorBackground;
 
         .icon {
