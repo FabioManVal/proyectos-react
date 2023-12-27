@@ -7,6 +7,7 @@ import { ShowNumber } from '../../components/GuessNumber/ShowNumber/ShowNumber';
 import { DisplayGuessNumber } from '../../components/GuessNumber/DisplayGuessNumber/DisplayGuessNumber';
 import { WinnerModal } from '../../components/GuessNumber/WinnerModal/WinnerModal';
 import { Tries } from '../../components/GuessNumber/Tries/Tries';
+import { RangeNumber } from '../../components/GuessNumber/RangeNumber/RangeNumber';
 
 import { repeatNumber, focusRepeatNumber, sortNumbers } from '../../utils/GuessNumber/insertNumber';
 import { isNumber, existNumber } from '../../utils/GuessNumber/validations';
@@ -179,7 +180,9 @@ export function GuessNumber() {
                     {tooTall.length > 0 || tooLow.length > 0 ?
                         <div className="guessNumber__content">
                             <ListNumbers arrNumbers={tooTall} isToo={true}></ListNumbers>
-                            <DisplayGuessNumber number={winnerNumber}>{guessNumber}</DisplayGuessNumber>
+                            <div className="content__Number">
+                                <DisplayGuessNumber number={winnerNumber} maxRange={maxRange}>{guessNumber}</DisplayGuessNumber>
+                            </div>
                             <ListNumbers arrNumbers={tooLow} isToo={false}></ListNumbers>
                         </div> :
                         ''

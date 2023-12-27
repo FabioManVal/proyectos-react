@@ -1,0 +1,20 @@
+@use '../../../scss/index.scss' as *;
+
+.rangeNumber {
+    position: relative;
+    top: 0;
+    font-size: $sz2;
+
+    &__number {
+        position: absolute;
+        z-index: 2;
+
+        &--mirror {
+            position: absolute;
+            color: $colorButtonSuccess;
+            top: 0;
+            left: 0.15rem;
+            z-index: 1;
+        }
+    }
+}
